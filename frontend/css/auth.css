@@ -1,0 +1,50 @@
+/* css/auth.css */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg: #0a0f1a; --surface: #111827; --surface2: #1a2436;
+  --border: #1e2d42; --accent: #00d4aa; --accent2: #0099ff;
+  --accent3: #ff6b6b; --text: #e8f0fe; --text2: #8ba3bf; --text3: #4a6380;
+  --glow: rgba(0,212,170,0.15);
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:'Sora',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
+body::before { content:''; position:fixed; inset:0; background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size:48px 48px; opacity:.35; pointer-events:none; z-index:0; }
+body::after { content:''; position:fixed; inset:0; background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(0,212,170,.08),transparent 70%); pointer-events:none; z-index:0; }
+
+.auth-wrapper { min-height:100vh; display:flex; align-items:center; justify-content:center; position:relative; z-index:1; }
+.auth-card { width:420px; max-width:95vw; background:var(--surface); border:1px solid var(--border); border-radius:20px; padding:40px; box-shadow:0 40px 120px rgba(0,0,0,.6); animation:fadeUp .5s ease; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+
+.auth-logo { text-align:center; margin-bottom:30px; }
+.auth-logo-icon { width:56px; height:56px; border-radius:16px; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; font-size:24px; margin:0 auto 12px; box-shadow:0 0 40px var(--glow); }
+.auth-logo h1 { font-family:'DM Serif Display',serif; font-size:28px; }
+.auth-logo h1 span { color:var(--accent); font-style:italic; }
+.auth-logo p { font-size:12px; color:var(--text3); margin-top:4px; }
+
+.auth-tabs { display:flex; background:var(--surface2); border-radius:10px; padding:4px; margin-bottom:24px; }
+.auth-tab { flex:1; text-align:center; padding:9px; border-radius:7px; cursor:pointer; font-size:13px; font-weight:500; color:var(--text3); transition:all .2s; border:none; background:none; font-family:'Sora',sans-serif; }
+.auth-tab.active { background:var(--accent); color:#000; font-weight:700; }
+
+.auth-panel { display:none; }
+.auth-panel.active { display:block; }
+
+.form-label-auth { font-size:11px; color:var(--text3); font-weight:600; letter-spacing:.8px; text-transform:uppercase; margin-bottom:6px; display:block; }
+.form-control-auth { background:var(--surface2)!important; border:1px solid var(--border)!important; color:var(--text)!important; padding:11px 14px; border-radius:9px; font-size:13.5px; font-family:'Sora',sans-serif; outline:none; transition:all .2s; width:100%; }
+.form-control-auth:focus { border-color:var(--accent)!important; box-shadow:0 0 0 3px var(--glow)!important; }
+.form-control-auth::placeholder { color:var(--text3); }
+
+.btn-auth { font-family:'Sora',sans-serif; font-size:13.5px; font-weight:700; border-radius:9px; border:none; padding:13px; cursor:pointer; width:100%; background:var(--accent); color:#0a0f1a; box-shadow:0 0 20px rgba(0,212,170,.3); transition:all .2s; }
+.btn-auth:hover { transform:translateY(-1px); box-shadow:0 0 30px rgba(0,212,170,.5); }
+.btn-auth:disabled { opacity:.6; cursor:not-allowed; transform:none; }
+
+.auth-demo-hint { text-align:center; font-size:12px; color:var(--text3); margin-top:16px; }
+.auth-demo-hint code { font-family:'JetBrains Mono',monospace; color:var(--accent); background:rgba(0,212,170,.08); padding:2px 6px; border-radius:4px; }
+
+.toast-container-custom { position:fixed; bottom:24px; right:24px; z-index:9999; display:flex; flex-direction:column; gap:10px; }
+.toast-esehat { background:var(--surface); border:1px solid var(--border); border-radius:11px; padding:14px 18px; display:flex; align-items:center; gap:12px; font-size:13px; min-width:280px; box-shadow:0 10px 40px rgba(0,0,0,.4); border-left:3px solid var(--accent); animation:slideIn .3s ease; }
+.toast-esehat.error { border-left-color:var(--accent3); }
+@keyframes slideIn { from{transform:translateX(60px);opacity:0} to{transform:translateX(0);opacity:1} }
+
+.spinner { display:inline-block; width:16px; height:16px; border:2px solid rgba(0,212,170,.3); border-top-color:var(--accent); border-radius:50%; animation:spin .7s linear infinite; vertical-align:middle; }
+@keyframes spin { to { transform:rotate(360deg) } }
