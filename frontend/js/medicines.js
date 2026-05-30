@@ -1,7 +1,4 @@
-// ============================================================
-//  E-SEHAT — Medicines Module (Real API)
-//  File: js/medicines.js
-// ============================================================
+
 
 let allMedicines = []; // local cache for prescription dropdown
 
